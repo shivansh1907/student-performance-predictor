@@ -1,0 +1,62 @@
+[2026-09-29 14:23:30,501] 18 root - ERROR - Error occurred in python script name [C:\Users\Shivansh Khandelwal\OneDrive\Desktop\mlproject2\src\pipeline\predict_pipeline.py] line number [20] error message ['SimpleImputer' object has no attribute '_fill_dtype']
+[2026-09-29 14:23:30,502] 1741 application - ERROR - Exception on /predict [POST]
+Traceback (most recent call last):
+  File "C:\Users\Shivansh Khandelwal\OneDrive\Desktop\mlproject2\src\pipeline\predict_pipeline.py", line 20, in predict
+    data_scaled=preprocessor.transform(features)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\compose\_column_transformer.py", line 1099, in transform
+    Xs = self._call_func_on_transformers(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\compose\_column_transformer.py", line 901, in _call_func_on_transformers
+    return Parallel(n_jobs=self.n_jobs)(jobs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\utils\parallel.py", line 91, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\joblib\parallel.py", line 1986, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\joblib\parallel.py", line 1914, in _get_sequential_output
+    res = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\utils\parallel.py", line 184, in __call__
+    return self.function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\pipeline.py", line 1464, in _transform_one
+    res = transformer.transform(X, **params.transform)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\pipeline.py", line 1043, in transform
+    Xt = transform.transform(Xt, **routed_params[name].transform)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\sklearn\impute\_base.py", line 632, in transform
+    self._fill_dtype, copy=False
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'SimpleImputer' object has no attribute '_fill_dtype'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\OneDrive\Desktop\mlproject2\application.py", line 30, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivansh Khandelwal\OneDrive\Desktop\mlproject2\src\pipeline\predict_pipeline.py", line 25, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occurred in python script name [C:\Users\Shivansh Khandelwal\OneDrive\Desktop\mlproject2\src\pipeline\predict_pipeline.py] line number [20] error message ['SimpleImputer' object has no attribute '_fill_dtype']
