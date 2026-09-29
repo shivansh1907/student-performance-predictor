@@ -1,1 +1,73 @@
-<h1>welcome to the web app</h1>
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">End-to-end machine learning project</span>
+    <h1>Predict a student's maths score from their background and test results</h1>
+    <p>
+        A regression model trained on 1,000 student records estimates the maths exam score
+        from demographics, test preparation and reading &amp; writing scores.
+    </p>
+    <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('predict_datapoint') }}">Try the predictor →</a>
+        <a class="btn btn-secondary" href="https://github.com/shivansh1907/student-performance-predictor" target="_blank" rel="noopener">View source</a>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat">
+        <div class="stat-value">1,000</div>
+        <div class="stat-label">Student records</div>
+    </div>
+    <div class="stat">
+        <div class="stat-value">7</div>
+        <div class="stat-label">Models compared</div>
+    </div>
+    <div class="stat">
+        <div class="stat-value">0.88</div>
+        <div class="stat-label">R² on test set</div>
+    </div>
+    <div class="stat">
+        <div class="stat-value">Linear</div>
+        <div class="stat-label">Best model: Linear Regression</div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub">A modular training pipeline feeds a Flask app that serves predictions.</p>
+    <ol class="steps">
+        <li class="step">
+            <h3>Data ingestion</h3>
+            <p>Loads the raw dataset and creates an 80/20 train–test split.</p>
+        </li>
+        <li class="step">
+            <h3>Transformation</h3>
+            <p>Imputes missing values, one-hot encodes categories and scales numeric features.</p>
+        </li>
+        <li class="step">
+            <h3>Model training</h3>
+            <p>Tunes 7 regressors with GridSearchCV and keeps the best by R² score.</p>
+        </li>
+        <li class="step">
+            <h3>Prediction</h3>
+            <p>The saved preprocessor and model score new inputs from the web form.</p>
+        </li>
+    </ol>
+</section>
+
+<section>
+    <h2 class="section-title">Tech stack</h2>
+    <p class="section-sub">Models evaluated and tools used across the project.</p>
+    <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">pandas</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">CatBoost</span>
+        <span class="tag">Flask</span>
+        <span class="tag">AWS Elastic Beanstalk</span>
+        <span class="tag">AWS CodePipeline</span>
+    </div>
+</section>
+{% endblock %}

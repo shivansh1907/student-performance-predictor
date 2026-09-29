@@ -13,7 +13,7 @@ def index():
 @app.route('/predict',methods=['POST','GET'])
 def predict_datapoint():
     if request.method=='GET':
-        return render_template('home.html')
+        return render_template('home.html',form={})
     else:
         data=CustomData(
             gender=request.form.get('gender'),
@@ -28,7 +28,7 @@ def predict_datapoint():
 
         predict_pipeline=PredictPipeline()
         results=predict_pipeline.predict(pred_df)
-        return render_template('home.html',results=round(results[0],2))
+        return render_template('home.html',results=round(float(results[0]),2),form=request.form)
 
 
 if __name__=="__main__":
